@@ -1,0 +1,43 @@
+create database cosc301_Project;
+
+ use cosc301_Project;
+
+create table cleanData (
+user_id int,
+day_type varchar(7),
+work_hours decimal(10,2),
+screen_time_hours decimal(10,2),
+meetings_count int,
+breaks_taken int,
+after_hours_work int,
+sleep_hours int,
+task_completion_rate decimal (10,2),
+burnout_score decimal(10,2),
+burnout_risk varchar(20)
+);
+
+create table summations (
+user_id int,
+total_hours_worked decimal(10,2),
+total_screen_time decimal(10,2),
+total_meetings int,
+total_breaks int,
+total_overtime int,
+total_sleep_hours decimal(10,2),
+total_burnout_score decimal(10,2)
+);
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 9.6/Uploads/Cleaned.csv'
+INTO TABLE cleanData
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 9.6/Uploads/Summations.csv'
+INTO TABLE summations
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
